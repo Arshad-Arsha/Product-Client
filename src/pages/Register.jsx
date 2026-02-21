@@ -13,7 +13,7 @@ const Register = () => {
   });
   
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -22,15 +22,16 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (loading) return; 
+    if (loading) return;
+
     setError("");
     
-   
+
     if (formData.password !== formData.confirmPassword) {
       return setError("Passwords do not match");
     }
 
-    setLoading(true);
+    setLoading(true); 
 
     try {
       const response = await API.post("/user/user-create", formData);
@@ -40,7 +41,7 @@ const Register = () => {
         navigate("/"); 
       }
     } catch (err) {
-      // Catch backend errors (400, 500, etc.)
+
       const errorMsg = err.response?.data?.message || "Something went wrong";
       setError(errorMsg);
     } finally {
