@@ -1,27 +1,3 @@
-// import React from "react";
-
-// const UserTable = ({ users, setEditUser, handleDelete }) => (
-//   <table className="table">
-//     <thead>
-//       <tr><th>Name</th><th>Email</th><th>Contact</th><th>Role</th><th>Actions</th></tr>
-//     </thead>
-//     <tbody>
-//       {users.map(user => (
-//         <tr key={user._id}>
-//           <td>{user.username}</td>
-//           <td>{user.email}</td>
-//           <td>{user.contact}</td>
-//           <td>{user.role}</td>
-//           <td>
-//             <button onClick={() => setEditUser(user)}>Edit</button>
-//             <button onClick={() => handleDelete(user._id)}>Delete</button>
-//           </td>
-//         </tr>
-//       ))}
-//     </tbody>
-//   </table>
-// );
-
 // export default UserTable;
 import React from "react";
 
@@ -52,5 +28,6 @@ const UserTable = ({ users, setEditUser, handleDelete }) => (
     </tbody>
   </table>
 );
+
 
 export default UserTable;
