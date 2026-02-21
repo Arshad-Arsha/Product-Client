@@ -9,11 +9,11 @@ const Register = () => {
     password: "",
     confirmPassword: "",
     contact: "",
-    role: "" // Default value to match dropdown
+    role: "" 
   });
   
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // Prevents double API calls
+  const [loading, setLoading] = useState(false); 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -22,30 +22,29 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (loading) return; // Exit if already submitting
-
+    if (loading) return; 
     setError("");
     
-    // Client-side validation
+   
     if (formData.password !== formData.confirmPassword) {
       return setError("Passwords do not match");
     }
 
-    setLoading(true); // Start loading
+    setLoading(true);
 
     try {
       const response = await API.post("/user/user-create", formData);
       
       if (response.data.success) {
         alert("User created successfully!");
-        navigate("/"); // Redirect to login
+        navigate("/"); 
       }
     } catch (err) {
       // Catch backend errors (400, 500, etc.)
       const errorMsg = err.response?.data?.message || "Something went wrong";
       setError(errorMsg);
     } finally {
-      setLoading(false); // Stop loading regardless of success/fail
+      setLoading(false); 
     }
   };
 
@@ -111,7 +110,7 @@ const Register = () => {
         <button 
           type="submit" 
           className="btn primary" 
-          disabled={loading} // Disable button while API is calling
+          disabled={loading} 
         >
           {loading ? "Processing..." : "Register"}
         </button>
