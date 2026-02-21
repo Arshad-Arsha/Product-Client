@@ -18,7 +18,7 @@ const Products = () => {
     qty: ""
   });
 
-  // Only Admin and Sellers can modify
+  
   const canModify = user?.role === "seller" || user?.role === "admin";
 
   const fetchProducts = async () => {
@@ -42,7 +42,6 @@ const Products = () => {
     e.preventDefault();
     setError("");
 
-    // Validation: Check if product already exists
     const productExists = products.find(
       (p) =>
         p.name.toLowerCase() === formData.name.toLowerCase() &&
