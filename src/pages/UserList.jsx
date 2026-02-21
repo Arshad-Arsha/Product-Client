@@ -7,13 +7,11 @@ const UserList = () => {
   const [users, setUsers] = useState([]);
   const [editUser, setEditUser] = useState(null);
 
-  // Fetch all users from backend
 const fetchUsers = async () => {
   try {
     const res = await API.get("/user/get-data");
-    console.log("Users fetched:", res.data.users); // debug
-    setUsers(res.data.users); // <-- must use res.data.users
-  } catch (err) {
+    console.log("Users fetched:", res.data.users); 
+    setUsers(res.data.users); 
     console.error("Failed to fetch users:", err);
   }
 };
@@ -27,7 +25,7 @@ const fetchUsers = async () => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
     try {
       await API.delete(`/user/delete-data-id/${id}`);
-      fetchUsers(); // refresh list
+      fetchUsers();
     } catch (err) {
       console.error("Failed to delete user:", err);
     }
@@ -53,5 +51,6 @@ const fetchUsers = async () => {
     </div>
   );
 };
+
 
 export default UserList;
